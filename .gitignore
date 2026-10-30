@@ -31,3 +31,6 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 *.sw?
+
+# Local agent tooling
+.claude/
