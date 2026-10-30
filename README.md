@@ -9,6 +9,9 @@ concept based on their own room, and a saved project they can come back to.
 > Concepts are visual ideas, not photos, plans or quotes. The image model is asked to keep walls, windows, doors,
 > the camera angle and anything the user marks “keep”, but it can still change details.
 
+**Live demo:** https://vivaan123456789069696969-cyber.github.io/roomtone/ — runs in demo mode: accounts and photos
+stay in your browser, and concepts are labelled colour studies, not AI images.
+
 ## Contents
 
 - [Features](#features) · [How it works](#how-it-works) · [Architecture](#architecture)

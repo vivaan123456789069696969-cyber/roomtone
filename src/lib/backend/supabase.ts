@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Supabase backend: Auth, Postgres (row-level security) and a private
  * Storage bucket. Image generation runs in the `generate-concept` edge
  * function so provider keys never reach the browser.
@@ -64,8 +64,8 @@ const toConcept = (r: Row): Concept => ({
 
 function friendlyAuthError(e: { message?: string; code?: string } | null): Error {
   const m = e?.message ?? ''
-  if (/invalid login credentials/i.test(m)) return new Error('That email and password don’t match. Check for typos, or reset your password.')
-  if (/email not confirmed/i.test(m)) return new Error('Please confirm your email first — check your inbox for the link we sent.')
+  if (/invalid login credentials/i.test(m)) return new Error('That email and password donâ€™t match. Check for typos, or reset your password.')
+  if (/email not confirmed/i.test(m)) return new Error('Please confirm your email first â€” check your inbox for the link we sent.')
   if (/already registered|already exists/i.test(m)) return new Error('An account with that email already exists. Try signing in.')
   if (/rate limit/i.test(m)) return new Error('Too many attempts. Please wait a minute and try again.')
   if (/password/i.test(m)) return new Error(m)
@@ -116,7 +116,7 @@ export function createSupabaseBackend(url: string, anonKey: string): Backend {
       const { data, error } = await sb.auth.signUp({
         email,
         password,
-        options: { data: { display_name: displayName }, emailRedirectTo: `${location.origin}/welcome` },
+        options: { data: { display_name: displayName }, emailRedirectTo: `${location.origin}${import.meta.env.BASE_URL}welcome` },
       })
       if (error) throw friendlyAuthError(error)
       return { needsConfirmation: !data.session }
@@ -130,7 +130,7 @@ export function createSupabaseBackend(url: string, anonKey: string): Backend {
       signed.clear()
     },
     async requestPasswordReset(email) {
-      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: `${location.origin}/reset-password` })
+      const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: `${location.origin}${import.meta.env.BASE_URL}reset-password` })
       if (error) throw friendlyAuthError(error)
     },
     async updatePassword(password) {
@@ -148,7 +148,7 @@ export function createSupabaseBackend(url: string, anonKey: string): Backend {
     },
     async deleteAccount() {
       const { error } = await sb.functions.invoke('delete-account', { method: 'POST' })
-      if (error) throw new Error('We couldn’t delete your account just now. Please try again, or contact us.')
+      if (error) throw new Error('We couldnâ€™t delete your account just now. Please try again, or contact us.')
       await sb.auth.signOut()
     },
 
@@ -181,7 +181,7 @@ export function createSupabaseBackend(url: string, anonKey: string): Backend {
       const current = await this.getProject(projectId)
       const path = `${owner}/${projectId}/original-${crypto.randomUUID()}.jpg`
       const { error } = await sb.storage.from(BUCKET).upload(path, blob, { contentType: 'image/jpeg', upsert: false })
-      if (error) throw new Error('The upload didn’t finish. Check your connection and try again.')
+      if (error) throw new Error('The upload didnâ€™t finish. Check your connection and try again.')
       if (current?.photoPath) await sb.storage.from(BUCKET).remove([current.photoPath])
       const status = !current || current.status === 'draft' ? 'photo_added' : current.status
       return toProject(check(await sb.from('projects').update({ photo_path: path, status }).eq('id', projectId).select().single()))

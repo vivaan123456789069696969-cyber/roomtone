@@ -2,7 +2,25 @@
 
 Roomtone is a static single-page app plus Supabase. No paid service is required to launch a demo.
 
-## Recommended hosting
+## Current deployment: GitHub Pages (demo mode)
+
+Live at https://vivaan123456789069696969-cyber.github.io/roomtone/, served from the `gh-pages` branch.
+
+To redeploy after changes on `main`:
+
+```bash
+npm run build:pages          # builds with base /roomtone/ and copies index.html to 404.html for deep links
+cd dist && touch .nojekyll && git init -b gh-pages && git add -A && git commit -m "Deploy" \
+  && git push -f https://github.com/vivaan123456789069696969-cyber/roomtone.git gh-pages
+```
+
+Deep links return HTTP 404 from GitHub Pages but still load the app through `404.html`; that's expected. For live
+mode on Pages, add `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` to `.env.production.local` before building, and add
+`https://vivaan123456789069696969-cyber.github.io/roomtone/welcome` and `/roomtone/reset-password` as Supabase
+redirect URLs. A GitHub Actions workflow could automate this, but the current GitHub token lacks the `workflow`
+scope.
+
+## Recommended hosting for live mode
 
 | Option | Cost to start | Notes |
 | --- | --- | --- |
