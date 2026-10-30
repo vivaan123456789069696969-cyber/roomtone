@@ -151,4 +151,4 @@ Manual and user-testing protocol (5–10 varied room photos, fidelity checks, in
 Third-party packages, fonts and icons are listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). All
 illustrations in the app are original SVG drawn for this project.
 
-License: **MIT (proposed — pending the project owner's approval before public release).** See [LICENSE](LICENSE).
+License: **MIT.** See [LICENSE](LICENSE).

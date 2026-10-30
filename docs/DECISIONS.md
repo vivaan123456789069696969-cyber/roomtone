@@ -17,7 +17,7 @@ Suggested owners are coordination guidance only.
 | D8 | Limits: 12 concepts/user/day, 3 refinements per project, one generation at a time per project | Cost and runaway-retry protection | Vivaan |
 | D9 | Download only; no share links | Sharing is optional until privacy is verified | Vivaan |
 | D10 | Budget in INR ranges | Team and first users are in India | Vivaan |
-| D11 | MIT license proposed | No license existed; needs owner approval | Owner |
+| D11 | MIT license | No license existed; approved by the owner on 2026-10-30 | Owner |
 
 ## Open questions
 
