@@ -1,0 +1,33 @@
+# Dependencies and builds
+node_modules
+dist
+dist-ssr
+*.tsbuildinfo
+
+# Environment and secrets — only .env.example is tracked
+.env
+.env.*
+!.env.example
+*.local
+
+# Supabase CLI local state
+supabase/.temp
+supabase/.branches
+supabase/.env
+
+# Private test material: never commit real room photos or generated concepts
+test-photos/
+private/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.sw?
